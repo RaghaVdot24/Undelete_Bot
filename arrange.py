@@ -5,7 +5,6 @@ Created on Fri Dec 21 20:34:39 2018
 @author: Raghav Utpat
 """
 
-import os
 import pandas as pd
 
 
@@ -34,8 +33,7 @@ def arrange(subr,df):
 def main():
     df=pd.DataFrame()
     groupedfile='D:/Bot/deletedcomments.csv'
-    #subs=['worldnews','news','todayilearned','politics','europe']#,'tumblr']
-    subs=['pythonforengineers']
+    subs=['worldnews','news','todayilearned','politics','europe','tumblr']
     for sub in subs:
         df=arrange(sub,df)
     print(df.info())

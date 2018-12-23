@@ -17,7 +17,7 @@ def reply(author,c_id):
     df=pd.read_csv(infile)
     c_body=df.loc[df['comment_id']==c_id,'comment_text'].iloc[0]
     plink=df.loc[df['comment_id']==c_id,'permalink'].iloc[0]
-    text='I undeleted [this comment]('+plink+') for you. Here it is:    \n"'+c_body+'"    \nFor more info visit [r/_undelete_Bot](https://www.reddit.com/r/_undelete_Bot/)'
+    text='I undeleted [this comment]('+plink+') for you. Here it is:    \n"'+c_body+'"    \nFor more info visit [r/_undelete_Bot](https://www.reddit.com/r/undelete_Bot/)'
     author.message('Hello , _undelete_Bot here',text)
 
 def main():    

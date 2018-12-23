@@ -164,8 +164,7 @@ def write_df(subr):
 
 
 def main():
-    #subs=['worldnews','news','todayilearned','politics','europe','tumblr']
-    subs=['pythonforengineers']
+    subs=['worldnews','news','todayilearned','politics','europe','tumblr']
     LIMIT=5
     VERBOSE=True
     modes=['HOT','RISING']
