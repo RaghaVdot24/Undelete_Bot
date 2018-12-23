@@ -1,0 +1,13 @@
+#.gitignore
+*.csv
+*.ini
+TODO.txt
+.~lock.out.csv#
+/Europe
+/News
+/Politics
+/Pythonforengineers
+/Todayilearned
+/Tumblr
+/Worldnews
+/India
