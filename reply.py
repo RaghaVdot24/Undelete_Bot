@@ -31,7 +31,8 @@ def reply(subr,num_comments):
     replied_to.append(l)
     for r_id in random_rows:
         comm=reddit.comment(r_id)
-        child_comment=give_child(r_id)
+        comm.refresh()
+        child_comment=comm.replies[0]
         print(child_comment)
         returned_id=child_comment.reply(text1+r_id+text2)
         ret_id.append(returned_id)
@@ -47,17 +48,9 @@ def reply(subr,num_comments):
         df3.to_csv(outfile,mode='a',index=False,header=False)
 
 
-def give_child(c_id):
-    submission=reddit.comment(c_id).submission
-    submission.comments.replace_more()
-    for c in submission.comments.list():
-        if(c.parent().id==c_id):
-            return c
-
-
 def main():
-    subs=['worldnews','news','todayilearned','politics','europe','tumblr']
-    #subs=['pythonforengineers']
+    #subs=['worldnews','news','todayilearned','politics','europe','tumblr']
+    subs=['pythonforengineers']
     num_comm=5
     for sub in subs:
         print('Running sub %s' %(sub))

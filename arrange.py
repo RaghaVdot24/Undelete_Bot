@@ -34,8 +34,8 @@ def arrange(subr,df):
 def main():
     df=pd.DataFrame()
     groupedfile='D:/Bot/deletedcomments.csv'
-    subs=['worldnews','news','todayilearned','politics','europe']#,'tumblr']
-    #subs=['pythonforengineers']
+    #subs=['worldnews','news','todayilearned','politics','europe']#,'tumblr']
+    subs=['pythonforengineers']
     for sub in subs:
         df=arrange(sub,df)
     print(df.info())
