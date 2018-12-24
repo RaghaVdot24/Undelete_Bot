@@ -31,12 +31,13 @@ def arrange(subr,df):
     return df
 
 def main():
-    df=pd.DataFrame()
     groupedfile='D:/Bot/deletedcomments.csv'
+    df=pd.read_csv(groupedfile)
     subs=['worldnews','news','todayilearned','politics','europe','tumblr']
     for sub in subs:
         df=arrange(sub,df)
     print(df.info())
+    df.drop_duplicates(subset='comment_id',inplace=True)
     df.to_csv(groupedfile,index=False)
         
         
