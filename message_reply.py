@@ -21,6 +21,7 @@ def reply(author,c_id):
     author.message('Hello , _undelete_Bot here',text)
 
 def main():    
+    i=0
     for item in reddit.inbox.unread(limit=None):
         if isinstance(item, Message):
             print(item.body)
@@ -28,6 +29,8 @@ def main():
             print(item.author)
             if(item.subject=='Undelete'):
                 reply(item.author,item.body)
+                i+=1
+                print("Messages replied to: %r"%(i))
                 item.mark_read()
                 
 

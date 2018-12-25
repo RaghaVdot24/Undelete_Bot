@@ -6,6 +6,7 @@ Created on Mon Dec 24 16:13:46 2018
 """
 
 import os
+import time
 import praw
 import pandas as pd
 
@@ -31,18 +32,19 @@ def undelete_reply(subr):
         (returned_id,flag)=reply_to_child(child_comment,r_id)
         if(flag==False):
             continue
+        time.sleep(180)
         replied_to.append(r_id)
         ret_id.append(returned_id)        
 
 
     '''Drop rows from deletedcopy.csv using comment ids replied to and write it to file'''
-    df1=df1[df1['comment_id']!=replied_to]
+    df1=df1[~df1['comment_id'].isin(replied_to)]
     df1.to_csv(infile,index=False)
     
     
     '''Drop rows from deleted.csv using comment ids replied to write it to file'''
     df_deleted=pd.read_csv(infile2)
-    df_deleted=df_deleted[df_deleted['deleted comments']!=replied_to]
+    df_deleted=df_deleted[~df_deleted['deleted comments'].isin(replied_to)]
     print(df_deleted.info())
     df_deleted.to_csv(infile2,index=False)
     
@@ -65,9 +67,10 @@ def reply_to_child(child_comment,r_id):
             except praw.exceptions.APIException as e:
                 print(e.message)
                 return(False,0)
+    return(False,0)
 
 def main():
-    subs=['worldnews','news','todayilearned','politics','europe','tumblr']
+    subs=['tumblr']
     for sub in subs:
         print('Running sub %s' %(sub))
         undelete_reply(sub)

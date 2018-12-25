@@ -14,7 +14,6 @@ def delete(subr,DIFF):
     discardedfile='D:/Bot/'+subr.capitalize()+'/'+subr+'discarded.csv'
     today=datetime.utcnow()
     df=pd.read_csv(infile,parse_dates=['created_utc'])
-    print(df.info())
     if(df['created_utc'].dtype==object):
         datemask=(df['created_utc'].str.len()>=8)
         df=df[datemask]
@@ -37,7 +36,7 @@ def delete(subr,DIFF):
         
 def main():
     subs=['worldnews','news','todayilearned','politics','europe','tumblr']
-    DIFF=2.5*24
+    DIFF=1.5*24
     for sub in subs:
         print('Running sub %s' %(sub))
         delete(sub,DIFF)

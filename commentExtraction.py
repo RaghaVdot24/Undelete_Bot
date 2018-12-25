@@ -165,7 +165,7 @@ def write_df(subr):
 
 def main():
     subs=['worldnews','news','todayilearned','politics','europe','tumblr']
-    LIMIT=5
+    LIMIT=30
     VERBOSE=True
     modes=['HOT','RISING']
     for subr in subs:
